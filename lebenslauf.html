@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<title>Lebenslauf · Kim Muckenschnabel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sand: #F2ECE1;
+    --sand-deep: #E8DFCE;
+    --ink: #21303F;
+    --ink-soft: #38485A;
+    --gold: #B08D57;
+    --gold-bright: #C9A063;
+    --soft: #8A949E;
+    --cream: #FBF8F2;
+    --shadow: rgba(33,48,63,0.12);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --sand: #F2ECE1;
+      --sand-deep: #E8DFCE;
+      --ink: #21303F;
+      --ink-soft: #38485A;
+      --gold: #B08D57;
+      --gold-bright: #C9A063;
+      --soft: #8A949E;
+      --cream: #FBF8F2;
+      --shadow: rgba(33,48,63,0.12);
+    }
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; color-scheme: only light; }
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--sand);
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-text-size-adjust: 100%;
+  }
+  ::selection { background: var(--gold); color: var(--cream); }
+  body::before {
+    content: "";
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 9999; mix-blend-mode: multiply;
+  }
+
+  /* Top bar */
+  .top {
+    position: sticky; top: 0; z-index: 50;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1rem clamp(1.5rem, 5vw, 4rem);
+    background: rgba(242,236,225,0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(33,48,63,0.07);
+  }
+  .top .logo { font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.2rem; color: var(--ink); text-decoration: none; }
+  .top .back {
+    font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.14em;
+    font-weight: 500; color: var(--ink-soft); text-decoration: none;
+    display: inline-flex; align-items: center; gap: 0.5rem; transition: color 0.3s, gap 0.3s;
+  }
+  .top .back:hover { color: var(--gold); gap: 0.8rem; }
+
+  /* Header */
+  .head {
+    padding: clamp(3rem, 9vw, 6rem) clamp(1.5rem, 5vw, 4rem) clamp(2rem, 5vw, 3rem);
+    max-width: 900px; margin: 0 auto;
+  }
+  .head .eyebrow {
+    text-transform: uppercase; letter-spacing: 0.3em; font-size: 0.76rem;
+    color: var(--gold); font-weight: 500; margin-bottom: 1.2rem;
+  }
+  .head h1 {
+    font-family: 'Fraunces', serif; font-weight: 600;
+    font-size: clamp(2rem, 8vw, 4.5rem); line-height: 1.04; letter-spacing: -0.02em;
+  }
+  .head h1 .gold { color: var(--gold); font-style: italic; font-weight: 400; display: block; }
+  .head .sub { margin-top: 1rem; color: var(--ink-soft); font-size: clamp(1rem, 2.4vw, 1.2rem); font-weight: 300; }
+  .head .opener {
+    margin-top: 2rem;
+    padding: 1.8rem 2rem;
+    border-left: 4px solid var(--gold-bright);
+    background: var(--ink);
+    color: #F3ECDD;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: clamp(1.25rem, 3vw, 1.7rem);
+    line-height: 1.45;
+    max-width: 46rem;
+    border-radius: 0 8px 8px 0;
+    box-shadow: 0 20px 40px -28px var(--shadow);
+  }
+  .head .contact {
+    margin-top: 1.4rem; display: flex; flex-wrap: wrap; gap: 0.6rem 1.4rem;
+    font-size: 0.9rem; color: var(--soft);
+  }
+  .head .contact a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--gold); padding-bottom: 1px; }
+
+  /* Download button */
+  .downloads { margin-top: 1.8rem; display: flex; gap: 0.8rem; flex-wrap: wrap; }
+  .dl {
+    font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 500;
+    color: var(--ink); text-decoration: none; padding: 0.7rem 1.4rem;
+    border: 1px solid var(--gold); border-radius: 100px; transition: background 0.3s, color 0.3s, transform 0.2s;
+  }
+  .dl:hover { background: var(--gold); color: var(--cream); transform: translateY(-2px); }
+
+  /* Content cards */
+  main { max-width: 900px; margin: 0 auto; padding: 0 clamp(1.5rem, 5vw, 4rem) clamp(4rem, 10vw, 7rem); }
+  .card {
+    background: var(--cream); border-radius: 6px; padding: clamp(1.8rem, 5vw, 3rem);
+    box-shadow: 0 24px 50px -30px var(--shadow); margin-bottom: 2rem;
+    border: 1px solid var(--sand-deep);
+  }
+  .section-label {
+    text-transform: uppercase; letter-spacing: 0.26em; font-size: 0.74rem;
+    color: var(--gold); font-weight: 500; margin-bottom: 1.6rem;
+    display: flex; align-items: center; gap: 0.8rem;
+  }
+  .section-label::before { content: ""; width: 30px; height: 1px; background: var(--gold); }
+
+  .profile-text { font-size: 1.05rem; color: var(--ink-soft); font-weight: 300; line-height: 1.6; }
+
+  /* Experience entries */
+  .entry { padding: 1.1rem 0; border-bottom: 1px solid var(--sand-deep); }
+  .entry:last-child { border-bottom: none; padding-bottom: 0; }
+  .entry .row { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; flex-wrap: wrap; }
+  .entry .co { font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.2rem; color: var(--ink); }
+  .entry .when { font-size: 0.85rem; color: var(--soft); white-space: nowrap; }
+  .entry .role { color: var(--gold); font-style: italic; font-size: 0.98rem; margin: 0.15rem 0 0.5rem; }
+  .entry .desc { color: var(--ink-soft); font-size: 0.97rem; font-weight: 300; line-height: 1.55; }
+
+  /* Skills grid */
+  .skills { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem 2rem; }
+  @media (max-width: 600px) { .skills { grid-template-columns: 1fr; } }
+  .skill .k { font-weight: 600; font-size: 1rem; color: var(--ink); margin-bottom: 0.3rem; }
+  .skill .v { color: var(--ink-soft); font-size: 0.95rem; font-weight: 300; }
+
+  /* Cover letter */
+  .letter p { color: var(--ink-soft); font-size: 1.02rem; font-weight: 300; line-height: 1.7; margin-bottom: 1.1rem; }
+  .letter p.hook { color: var(--gold); font-family: 'Fraunces', serif; font-style: italic; font-size: 1.2rem; font-weight: 500; }
+  .letter .sign { font-family: 'Fraunces', serif; color: var(--ink); font-weight: 600; margin-top: 1.4rem; }
+
+  footer { background: var(--ink); color: var(--soft); text-align: center; padding: 2rem; font-size: 0.75rem; letter-spacing: 0.05em; }
+  footer a { color: var(--gold-bright); text-decoration: none; }
+  footer a:hover { color: var(--cream); }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.8s, transform 0.8s; }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; } }
+</style>
+</head>
+<body>
+
+<div class="top">
+  <a class="logo" href="index.html">KM</a>
+  <a class="back" href="index.html">← Zurück zur Startseite</a>
+</div>
+
+<header class="head">
+  <!-- Der Lebenslauf bleibt für alle Bewerbungen gleich; nur die Zielposition oben
+       und der Inhalt werden bei Bedarf angepasst. Der persönliche „Warum genau ihr"-
+       Satz steht bewusst auf der Startseite, nicht hier. -->
+  <div class="eyebrow" id="position-label">Bewerbung als Marketing Manager/in</div>
+  <h1>Kim Kristin<span class="gold">Muckenschnabel</span></h1>
+  <p class="sub" id="subtitle">Marketing &amp; Events · Social Media · Controlling</p>
+
+  <div class="contact">
+    <a href="mailto:Kimkristin18@msn.com">Kimkristin18@msn.com</a>
+    <span>0170 709 8080</span>
+    <span>Basel</span>
+  </div>
+  <div class="downloads">
+    <a class="dl" href="#anschreiben">Anschreiben</a>
+    <a class="dl" href="#lebenslauf">Lebenslauf</a>
+    <a class="dl" href="dokumente.html">Dokumente</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- ══════════ LEBENSLAUF ══════════ -->
+  <section class="card reveal" id="lebenslauf">
+    <div class="section-label">Profil</div>
+    <p class="profile-text" id="profile">
+      Vielseitige Allrounderin, die Marketing, Eventorganisation und Zahlenverständnis verbindet. Erfahrung in Content und Social Media, kombiniert mit drei Jahren Controlling bei Manor Basel – inklusive Budget- und Reportingverantwortung. Strukturiert, organisationsstark und gewohnt, Projekte eigenständig zu steuern.
+    </p>
+  </section>
+
+  <section class="card reveal">
+    <div class="section-label">Erfahrung</div>
+
+    <div class="entry">
+      <div class="row"><span class="co">Manor AG, Basel</span><span class="when">Okt. 2023 – Juni 2026</span></div>
+      <div class="role">Controlling &amp; Backoffice / stv. Filialleitung</div>
+      <div class="desc">Budgetkontrolle, KPI-Reporting, Tagesabschlüsse. In Abwesenheit der Filialleitung eigenverantwortliche Führung eines Teams von 4–8 Personen. Koordination von Abläufen, Warenpräsentation und Lieferanten. Stelle im Rahmen des Stellenabbaus aufgehoben.</div>
+    </div>
+
+    <div class="entry">
+      <div class="row"><span class="co">Reservix GmbH, Freiburg</span><span class="when">2021 – Okt. 2023</span></div>
+      <div class="role">Werkstudentin – Events, Social Media &amp; Ticketing</div>
+      <div class="desc">Planung und Durchführung von Veranstaltungen, eigenständige Betreuung der Social-Media-Kanäle, Content-Erstellung und Kundenkommunikation.</div>
+    </div>
+
+    <div class="entry">
+      <div class="row"><span class="co">Ontourheroes — Eigenes Social-Media-Projekt</span><span class="when">aktuell</span></div>
+      <div class="role">Content Creation &amp; Reichweitenaufbau (Reels)</div>
+      <div class="desc">Instagram-Account von Grund auf aufgebaut: über 1.000 Follower in wenigen Wochen, ausschliesslich organisch über Reels. Konzeption, Dreh und Schnitt in Eigenregie.</div>
+    </div>
+
+    <div class="entry">
+      <div class="row"><span class="co">Stusie Freiburg</span><span class="when">studienbegleitend</span></div>
+      <div class="role">Event Operations &amp; Social Media</div>
+      <div class="desc">Selbstständige Organisation von Anlässen, Aufbau und Pflege der Social-Media-Präsenz.</div>
+    </div>
+
+    <div class="entry">
+      <div class="row"><span class="co">DM · 3a Composites · Finanzamt Freiburg</span><span class="when">frühere Stationen</span></div>
+      <div class="role">Backoffice, Vertrieb, Sachbearbeitung</div>
+    </div>
+  </section>
+
+  <section class="card reveal">
+    <div class="section-label">Stärken &amp; Kenntnisse</div>
+    <div class="skills">
+      <div class="skill"><div class="k">Marketing &amp; Events</div><div class="v">Kampagnen, Content, Social Media, Community Management, Eventplanung &amp; -steuerung</div></div>
+      <div class="skill"><div class="k">Zahlen &amp; Steuerung</div><div class="v">Budgetkontrolle, KPI-Reporting, Projektkoordination, Dienstleistersteuerung</div></div>
+      <div class="skill"><div class="k">Tools</div><div class="v">Canva, CapCut, Adobe, MS Office, SAP, Google Workspace</div></div>
+      <div class="skill"><div class="k">Sprachen</div><div class="v">Deutsch (Muttersprache), Englisch (B2), Spanisch (B1)</div></div>
+    </div>
+  </section>
+
+  <section class="card reveal">
+    <div class="section-label">Ausbildung</div>
+    <div class="entry">
+      <div class="row"><span class="co">Fernuniversität Hagen</span><span class="when">seit 2019</span></div>
+      <div class="role">B.Sc. Psychologie</div>
+    </div>
+    <div class="entry">
+      <div class="row"><span class="co">Wirtschaftsgymnasium Robert Gerwig, Singen</span><span class="when">bis 2012</span></div>
+      <div class="role">Allgemeine Hochschulreife (kaufmännisch)</div>
+    </div>
+    <div class="entry">
+      <div class="row"><span class="co">Albert-Ludwigs-Universität Freiburg</span><span class="when">2013 – 2019</span></div>
+      <div class="role">Lehramt – Geschichte, Philosophie, Ethik</div>
+    </div>
+  </section>
+
+  <!-- ══════════ ANSCHREIBEN ══════════ -->
+  <section class="card reveal letter" id="anschreiben">
+    <div class="section-label">Motivationsschreiben</div>
+    <!-- ▼▼ PRO BEWERBUNG ANPASSEN: kompletter Brieftext ▼▼ -->
+    <p class="hook" id="letter-hook">Eine Marketingrolle, in der Kampagnen, Events und Budgetverantwortung zusammenkommen – das ist genau die Schnittstelle, an der ich am stärksten bin.</p>
+    <div id="letter-body">
+      <p>In meiner Zeit bei der Reservix GmbH und der Stusie Freiburg habe ich Veranstaltungen geplant und durchgeführt, Social-Media-Kanäle eigenständig betreut und Inhalte erstellt. Das Steuern von Abläufen, das Koordinieren von Beteiligten und das termingerechte Liefern von Ergebnissen sind mir vertraut – ebenso die Zusammenarbeit mit externen Dienstleistern.</p>
+      <p>Was mich von vielen Marketing-Profilen unterscheidet: Bei der Manor AG Basel habe ich drei Jahre im Controlling gearbeitet und dabei Budgets kontrolliert und KPI-Reportings erstellt. Die Zahlenseite des Marketings bringe ich also aus erster Hand mit – kombiniert mit der kreativen. In Abwesenheit der Filialleitung habe ich zudem den gesamten Betrieb eigenständig geführt.</p>
+      <p>Meinen organischen Reichweitenaufbau zeige ich am liebsten am eigenen Projekt: Für den Fan-Account „Ontourheroes" habe ich in wenigen Wochen über 1.000 Follower gewonnen – allein mit selbst produzierten Reels.</p>
+    </div>
+    <p class="sign">Kim Kristin Muckenschnabel</p>
+  </section>
+
+</main>
+
+<footer>
+  © <span id="year"></span> Kim Muckenschnabel · <a href="index.html">Startseite</a> · <a href="impressum.html">Impressum</a>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  const io = new IntersectionObserver((es) => {
+    es.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
